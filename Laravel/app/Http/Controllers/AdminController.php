@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Teacher;
+use App\Module;
 
 class AdminController extends Controller
 {
@@ -16,7 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::get();
-        return view('/Admin', ['teachers' => $teachers]);
+        $modules = Module::get();
+        return view('/Admin', ['modules' => $modules]);
     }
 }

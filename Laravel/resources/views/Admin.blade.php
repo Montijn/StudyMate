@@ -8,9 +8,21 @@
                     <div class="card-header">Admin pagina</div>
 
                     <div class="card-body">
-                        @foreach($teachers as $teacher)
-                            <div>{{$teacher->firstname}}</div>
-                        @endforeach
+                        <div>
+                            @for ($i = 1; $i < 5; $i++)
+                            <h3>Blok {{$i}}</h3>
+
+                            @foreach($modules as $module)
+
+                                @if($module->period == $i)
+                                    <p>{{$module->moduleName}}</p>
+                                @endif
+
+
+                            @endforeach
+                            @endfor
+                        </div>
+
 
                     </div>
                 </div>
