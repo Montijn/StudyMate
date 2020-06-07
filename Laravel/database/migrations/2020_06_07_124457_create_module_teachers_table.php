@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModuleUsersTable extends Migration
+class CreateModuleTeachersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateModuleUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('module_users', function (Blueprint $table) {
-            $table->primary(['user_id', 'module_id']);
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('module_teachers', function (Blueprint $table) {
+            $table->primary(['teacher_id', 'module_id']);
+            $table->integer('teacher_id')->unsigned();
+            $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->integer('module_id')->unsigned();
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->integer('result')->nullable();
-            $table->string('file')->nullable();
+            $table->boolean('is_coordinator')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateModuleUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('module_users');
+        Schema::dropIfExists('module_teachers');
     }
 }
