@@ -8,6 +8,9 @@
                     <div class="card-header">Docent overzicht</div>
 
                     <div class="card-body">
+                        <form action="{{ route('teachers.create') }}">
+                            <button class="btn btn-primary">Docent aanmaken</button>
+                        </form>
                         @foreach($teachers as $teacher)
                             <div>
                                 <p>{{$teacher->firstname}}  {{$teacher->infix}}  {{$teacher->lastname}}</p>

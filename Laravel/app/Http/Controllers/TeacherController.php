@@ -23,6 +23,34 @@ class TeacherController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return Factory|View
+     */
+    public function create()
+    {
+        return view('Teachers/AddTeacher');
+    }
+
+    protected function store(Request $request)
+    {
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:20'],
+            'infix' => ['max:10'],
+            'last_name' => ['required', 'string', 'max:20'],
+
+        ]);
+
+        $teacherID = Teacher::create([
+            'firstname' => $request->input('first_name'),
+            'infix' => $request->input('infix'),
+            'lastname' => $request->input('last_name'),
+        ])->id;
+
+        return redirect()->action('TeacherController@index');
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param $id
@@ -76,8 +104,10 @@ class TeacherController extends Controller
 
         $teacher = Teacher::whereId($id)->first();
 
-        if(!$teacher->TeacherModules)
-        $teacher->delete();
+        if(count($teacher->TeacherModules) == 0){
+            $teacher->delete();
+        }
+
 
         return redirect()->action('TeacherController@index');
 
