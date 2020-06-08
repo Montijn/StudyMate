@@ -35,19 +35,21 @@ class ModuleController extends Controller
     protected function store(Request $request)
     {
         $request->validate([
-            'first_name' => ['required', 'string', 'max:20'],
-            'infix' => ['max:10'],
-            'last_name' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string', 'max:20'],
+            'year' => ['required'],
+            'period' => ['required' ],
+            'credits' => ['required']
 
         ]);
 
         $moduleID = Module::create([
-            'firstname' => $request->input('first_name'),
-            'infix' => $request->input('infix'),
-            'lastname' => $request->input('last_name'),
+            'moduleName' => $request->input('name'),
+            'year' => $request->input('year'),
+            'period' => $request->input('period'),
+            'credits' => $request->input('credits')
         ])->id;
 
-        return redirect()->action('ModuleController@show');
+        return redirect()->action('ModuleController@index');
     }
 
     /**
@@ -73,16 +75,19 @@ class ModuleController extends Controller
         $module = Module::where('id', $id)->first();
 
         $request->validate([
-            'first_name' => ['required', 'string', 'max:20'],
-            'infix' => ['max:10'],
-            'last_name' => ['required', 'string', 'max:20']
+            'name' => ['required', 'string', 'max:20'],
+            'year' => ['required', 'number'],
+            'period' => ['required', 'number'],
+            'credits' => ['required', 'number']
+
         ]);
 
         $module
             ->update([
-                'firstname' => $request->input('first_name'),
-                'infix' => $request->input('infix'),
-                'lastname' => $request->input('last_name'),
+                'moduleName' => $request->input('name'),
+                'year' => $request->input('year'),
+                'period' => $request->input('period'),
+                'credits' => $request->input('credits')
 
             ]);
 

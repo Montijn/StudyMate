@@ -14,6 +14,11 @@
                         @foreach($modules as $module)
                             <div>
                                 <p>{{$module->moduleName}}</p>
+
+                                <form action="{{ route('modules.show',$module->id) }}">
+                                    <button class="btn btn-primary">Bekijk</button>
+                                </form>
+
                                 <form action="{{ route('modules.edit',$module->id) }}">
                                     <button class="btn btn-primary">Bewerk</button>
                                 </form>
