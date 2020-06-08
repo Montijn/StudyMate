@@ -65,6 +65,14 @@
                             </div>
                             @enderror
 
+                            <p>Toets</p>
+                            <select name="exam_id" id="exam_id" class="form-textbox @error('role') error-border @enderror">
+                                @foreach ($exams as $exam)
+                                    <option>
+                                        {{$exam->id . " " . $exam->name . " " . $exam->deadline}}
+                                    </option>
+                                @endforeach
+                            </select>
 
                             <button type="submit" class="btn btn-success" >Opslaan</button>
                             @csrf

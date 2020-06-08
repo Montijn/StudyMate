@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use App\Exam;
 
 class ModuleController extends Controller
 {
@@ -29,25 +30,42 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        return view('Modules/AddModule');
+        $exams = Exam::get();
+        return view('modules/AddModule', ['exams' => $exams]);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param integer $id
+     * @return Factory|RedirectResponse|Redirector|View
+     */
+    public function show($id)
+    {
+        $exams = Exam::get();
+        $module = Module::whereId($id)->first();
+        return view('modules/ShowModule', ['exams' => $exams], ['module' => $module]);
     }
 
     protected function store(Request $request)
-    {
+    {        $exam = $request->input('exam_id');
+            $exam_id = explode(" ", $exam);
+
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
             'year' => ['required'],
             'period' => ['required' ],
-            'credits' => ['required']
-
+            'credits' => ['required'],
+            'exam_id' =>['required']
         ]);
 
-        $moduleID = Module::create([
+         Module::create([
+
             'moduleName' => $request->input('name'),
             'year' => $request->input('year'),
             'period' => $request->input('period'),
-            'credits' => $request->input('credits')
-        ])->id;
+            'credits' => $request->input('credits'),
+            'exam_id' => $exam_id[0]
+        ]);
 
         return redirect()->action('ModuleController@index');
     }
@@ -60,7 +78,8 @@ class ModuleController extends Controller
      */
     public function edit($id){
         $module = Module::whereId($id)->first();
-        return view('Modules/EditModule', ['module' => $module]);
+        $exams = Exam::get();
+        return view('modules/EditModule', ['module' => $module], ['exams' => $exams]);
     }
 
     /**
@@ -76,10 +95,10 @@ class ModuleController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
-            'year' => ['required', 'number'],
-            'period' => ['required', 'number'],
-            'credits' => ['required', 'number']
-
+            'year' => ['required'],
+            'period' => ['required'],
+            'credits' => ['required'],
+            'exam_id' =>['required']
         ]);
 
         $module
@@ -87,13 +106,13 @@ class ModuleController extends Controller
                 'moduleName' => $request->input('name'),
                 'year' => $request->input('year'),
                 'period' => $request->input('period'),
-                'credits' => $request->input('credits')
-
+                'credits' => $request->input('credits'),
+                'exam_id' => $request->input('exam_id')
             ]);
 
 
 
-        return redirect()->action('TeacherController@index');
+        return redirect()->action('ModuleController@index');
     }
 
 

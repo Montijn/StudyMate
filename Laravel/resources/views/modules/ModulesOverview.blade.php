@@ -28,7 +28,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger"
-                                                onclick="return confirm('Weet je zeker dat je deze docent wilt verwijderen?')">
+                                                onclick="return confirm('Weet je zeker dat je deze module wilt verwijderen?')">
                                             Verwijder
                                         </button>
                                     </div>
