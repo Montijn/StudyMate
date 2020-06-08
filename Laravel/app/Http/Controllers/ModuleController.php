@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacher;
+use App\Module;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 
-class TeacherController extends Controller
+class ModuleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::get();
-        return view('teachers/TeacherOverview', ['teachers' => $teachers]);
+        $modules = Module::get();
+        return view('modules/ModulesOverview', ['modules' => $modules]);
     }
 
     /**
@@ -29,7 +29,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teachers/AddTeacher');
+        return view('Modules/AddModule');
     }
 
     protected function store(Request $request)
@@ -41,13 +41,13 @@ class TeacherController extends Controller
 
         ]);
 
-        $teacherID = Teacher::create([
+        $moduleID = Module::create([
             'firstname' => $request->input('first_name'),
             'infix' => $request->input('infix'),
             'lastname' => $request->input('last_name'),
         ])->id;
 
-        return redirect()->action('TeacherController@index');
+        return redirect()->action('ModuleController@show');
     }
 
     /**
@@ -57,8 +57,8 @@ class TeacherController extends Controller
      * @return Factory|View
      */
     public function edit($id){
-        $teacher = Teacher::whereId($id)->first();
-        return view('teachers/EditTeacher', ['teacher' => $teacher]);
+        $module = Module::whereId($id)->first();
+        return view('Modules/EditModule', ['module' => $module]);
     }
 
     /**
@@ -70,7 +70,7 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teacher = Teacher::where('id', $id)->first();
+        $module = Module::where('id', $id)->first();
 
         $request->validate([
             'first_name' => ['required', 'string', 'max:20'],
@@ -78,7 +78,7 @@ class TeacherController extends Controller
             'last_name' => ['required', 'string', 'max:20']
         ]);
 
-        $teacher
+        $module
             ->update([
                 'firstname' => $request->input('first_name'),
                 'infix' => $request->input('infix'),
@@ -102,14 +102,14 @@ class TeacherController extends Controller
     {
 
 
-        $teacher = Teacher::whereId($id)->first();
+        $module = Module::whereId($id)->first();
 
-        if(count($teacher->TeacherModules) == 0){
-            $teacher->delete();
+        if(count($module->TeacherModules) == 0 && count($module->ModuleUsers) == 0 ){
+            $module->delete();
         }
 
 
-        return redirect()->action('TeacherController@index');
+        return redirect()->action('ModuleController@index');
 
     }
 }
