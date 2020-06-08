@@ -18,7 +18,6 @@
                                     <p>{{$module->moduleName}}</p>
                                 @endif
 
-
                             @endforeach
                             @endfor
                         </div>

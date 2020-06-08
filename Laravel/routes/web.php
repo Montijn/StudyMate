@@ -20,4 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('CheckAdmin');
+Route::get('/teacheroverview', 'TeacherController@index')->middleware('CheckAdmin');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('teachers', 'TeacherController');
