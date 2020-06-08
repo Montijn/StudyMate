@@ -25,4 +25,4 @@ Route::get('/moduleoverview', 'ModuleController@index')->middleware('CheckAdmin'
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('teachers', 'TeacherController')->middleware('CheckAdmin');
 Route::resource('modules', 'ModuleController')->middleware('CheckAdmin');
-    
+

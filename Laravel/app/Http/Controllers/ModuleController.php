@@ -92,7 +92,8 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         $module = Module::where('id', $id)->first();
-
+        $exam = $request->input('exam_id');
+        $exam_id = explode(" ", $exam);
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
             'year' => ['required'],
@@ -107,7 +108,7 @@ class ModuleController extends Controller
                 'year' => $request->input('year'),
                 'period' => $request->input('period'),
                 'credits' => $request->input('credits'),
-                'exam_id' => $request->input('exam_id')
+                'exam_id' => $exam_id[0]
             ]);
 
 

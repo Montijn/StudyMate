@@ -9,7 +9,7 @@
 
                     <div class="card-body">
 
-                        <form  action="{{ route('modules.store') }}" method="POST"
+                        <form  action="{{ route('modules.update', $module->id) }}" method="POST"
                                enctype="multipart/form-data">
                             @csrf
                             <p >Naam</p>
@@ -80,7 +80,7 @@
 
                                 @endforeach
                             </select>
-
+                            @method('PUT')
                             <button type="submit" class="btn btn-success" >Opslaan</button>
                             @csrf
                         </form>
