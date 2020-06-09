@@ -16,7 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $modules = Module::get();
-        return view('/Admin', ['modules' => $modules]);
+
+        return view('/Admin');
     }
 }

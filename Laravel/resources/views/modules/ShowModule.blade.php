@@ -20,7 +20,11 @@
                             @if($exam->id == $module->exam_id)
                                 <p>{{$exam->id . " " . $exam->name . " " . $exam->deadline}}</p>
                             @endif
-                            @endforeach
+                        @endforeach
+                        <h5>Docent(en)</h5>
+                        @foreach($module->TeacherModules as $teacher)
+                           <p>{{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>

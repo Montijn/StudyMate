@@ -12,12 +12,9 @@
                             <button class="btn btn-primary">Module aanmaken</button>
                         </form>
                         <br>
-                        <br>
                         @foreach($modules as $module)
                             <div>
                                 <p>{{$module->moduleName}}</p>
-                                <br>
-
                                 <form action="{{ route('modules.show',$module->id) }}">
                                     <button class="btn btn-primary">Bekijk</button>
                                 </form>
@@ -34,10 +31,9 @@
                                                 onclick="return confirm('Weet je zeker dat je deze module wilt verwijderen?')">
                                             Verwijder
                                         </button>
-                                        <br>
-                                        <br>
                                     </div>
                                 </form>
+                                <br>
                             </div>
                         @endforeach
 

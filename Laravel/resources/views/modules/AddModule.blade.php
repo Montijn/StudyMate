@@ -68,8 +68,17 @@
                             <p>Toets</p>
                             <select name="exam_id" id="exam_id" class="form-textbox @error('role') error-border @enderror">
                                 @foreach ($exams as $exam)
-                                    <option>
-                                        {{$exam->id . " " . $exam->name . " " . $exam->deadline}}
+                                    <option value="{{$exam->id}}">
+                                        {{$exam->name . " " . $exam->deadline}}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <p>Docent(en)</p>
+                            <select multiple name="teacher_id[]" id="teacher_id" class="form-textbox @error('role') error-border @enderror">
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{$teacher->id}}">
+                                        {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
                                     </option>
                                 @endforeach
                             </select>

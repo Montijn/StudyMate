@@ -8,20 +8,13 @@
                     <div class="card-header">Admin pagina</div>
 
                     <div class="card-body">
-                        <div>
-                            @for ($i = 1; $i < 5; $i++)
-                            <h3>Blok {{$i}}</h3>
-
-                            @foreach($modules as $module)
-
-                                @if($module->period == $i)
-                                    <p>{{$module->moduleName}}</p>
-                                @endif
-
-                            @endforeach
-                            @endfor
-                        </div>
-
+                        <form action="{{ route('teachers.index') }}">
+                            <button class="btn btn-primary">Docenten overzicht</button>
+                        </form>
+                        <br>
+                        <form action="{{ route('modules.index' )}}">
+                            <button class="btn btn-primary">Modules overzicht</button>
+                        </form>
 
                     </div>
                 </div>

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use App\Exam;
+use App\Teacher;
 
 class ModuleController extends Controller
 {
@@ -31,7 +32,8 @@ class ModuleController extends Controller
     public function create()
     {
         $exams = Exam::get();
-        return view('modules/AddModule', ['exams' => $exams]);
+        $teachers = Teacher::get();
+        return view('modules/AddModule', ['exams' => $exams], ['teachers' => $teachers]);
     }
     /**
      * Display the specified resource.
@@ -47,26 +49,31 @@ class ModuleController extends Controller
     }
 
     protected function store(Request $request)
-    {        $exam = $request->input('exam_id');
-            $exam_id = explode(" ", $exam);
+    {
 
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
             'year' => ['required'],
             'period' => ['required' ],
             'credits' => ['required'],
-            'exam_id' =>['required']
+            'exam_id' =>['required'],
+            'teacher_id' =>['required']
         ]);
 
-         Module::create([
+        $module=  Module::create([
 
             'moduleName' => $request->input('name'),
             'year' => $request->input('year'),
             'period' => $request->input('period'),
             'credits' => $request->input('credits'),
-            'exam_id' => $exam_id[0]
-        ]);
+            'exam_id' => $request->input('exam_id')
+        ])->id;
+         $teachers = $request->input('teacher_id');
+         foreach($teachers as $teacherid){
 
+             $teacher = Teacher::whereId($teacherid)->first();
+             $teacher->TeacherModules()->attach($module,['is_coordinator' => false]);
+         }
         return redirect()->action('ModuleController@index');
     }
 
@@ -77,9 +84,10 @@ class ModuleController extends Controller
      * @return Factory|View
      */
     public function edit($id){
-        $module = Module::whereId($id)->first();
-        $exams = Exam::get();
-        return view('modules/EditModule', ['module' => $module], ['exams' => $exams]);
+        $data['module']=Module::whereId($id)->first();
+        $data['exams']=Exam::get();
+        $data['teachers']=Teacher::get();
+        return view('modules/EditModule', ['data'=>$data] );
     }
 
     /**
@@ -92,8 +100,6 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         $module = Module::where('id', $id)->first();
-        $exam = $request->input('exam_id');
-        $exam_id = explode(" ", $exam);
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
             'year' => ['required'],
@@ -108,10 +114,18 @@ class ModuleController extends Controller
                 'year' => $request->input('year'),
                 'period' => $request->input('period'),
                 'credits' => $request->input('credits'),
-                'exam_id' => $exam_id[0]
+                'exam_id' => $exam = $request->input('exam_id')
             ]);
 
-
+        $allteachers = Teacher::get();
+        foreach($allteachers as $teacher){
+            $teacher->TeacherModules()->detach($id);
+        }
+        $teachers = $request->input('teacher_id');
+        foreach($teachers as $teacherid){
+            $teacher = Teacher::whereId($teacherid)->first();
+            $teacher->TeacherModules()->attach($id,['is_coordinator' => false]);
+        }
 
         return redirect()->action('ModuleController@index');
     }

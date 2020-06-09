@@ -11,13 +11,14 @@
                         <form action="{{ route('teachers.create') }}">
                             <button class="btn btn-primary">Docent aanmaken</button>
                         </form>
+                        <br>
                         @foreach($teachers as $teacher)
                             <div>
                                 <p>{{$teacher->firstname}}  {{$teacher->infix}}  {{$teacher->lastname}}</p>
                                 <form action="{{ route('teachers.edit',$teacher->id) }}">
                                     <button class="btn btn-primary">Bewerk</button>
                                 </form>
-
+                                <br>
                                 <form action="{{ route('teachers.destroy', $teacher->id) }}" method="POST">
                                     <div>
                                         @csrf
@@ -28,6 +29,7 @@
                                         </button>
                                     </div>
                                 </form>
+                                <br>
                             </div>
                         @endforeach
 
