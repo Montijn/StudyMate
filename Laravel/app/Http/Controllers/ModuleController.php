@@ -68,12 +68,15 @@ class ModuleController extends Controller
             'credits' => $request->input('credits'),
             'exam_id' => $request->input('exam_id')
         ])->id;
+        
          $teachers = $request->input('teacher_id');
-         foreach($teachers as $teacherid){
-
-             $teacher = Teacher::whereId($teacherid)->first();
-             $teacher->TeacherModules()->attach($module,['is_coordinator' => false]);
-         }
+        foreach($teachers as $teacherid){
+            $teacher = Teacher::whereId($teacherid)->first();
+            $teacher->TeacherModules()->attach($module,['is_coordinator' => false]);
+        }
+        $coordinator = Teacher::whereId( $request->input('coordinator_id'))->first();
+        $coordinator->TeacherModules()->detach($module);
+        $coordinator->TeacherModules()->attach($module,['is_coordinator' => true]);
         return redirect()->action('ModuleController@index');
     }
 
@@ -126,6 +129,9 @@ class ModuleController extends Controller
             $teacher = Teacher::whereId($teacherid)->first();
             $teacher->TeacherModules()->attach($id,['is_coordinator' => false]);
         }
+        $coordinator = Teacher::whereId( $request->input('coordinator_id'))->first();
+        $coordinator->TeacherModules()->detach($id);
+        $coordinator->TeacherModules()->attach($id,['is_coordinator' => true]);
 
         return redirect()->action('ModuleController@index');
     }

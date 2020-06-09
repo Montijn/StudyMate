@@ -77,19 +77,35 @@
                                         </option>
                                     @endif
 
-
                                 @endforeach
                             </select>
                             <p>Docent(en)</p>
                             <select multiple name="teacher_id[]" id="teacher_id" >
                                 @foreach ($data['teachers'] as $teacher)
                                     @foreach($teacher->TeacherModules as $module)
-                                        @if($module->id == $data['module']->id)
+                                        @if($module->id == $data['module']->id && $module->pivot->is_coordinator == 0)
                                             <option selected value="{{$teacher->id}}">
                                                 {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
                                             </option>
 
                                         @endif
+                                    @endforeach
+                                    <option  value="{{$teacher->id}}">
+                                        {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <p>Coordinator</p>
+                            <select name="coordinator_id" id="coordinator_id" >
+                                @foreach ($data['teachers'] as $teacher)
+                                    @foreach($teacher->TeacherModules as $module)
+                                        @if($module->id == $data['module']->id && $module->pivot->is_coordinator == 1)
+                                            <option selected value="{{$teacher->id}}">
+                                                {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
+                                            </option>
+
+                                        @endif
+
                                     @endforeach
                                         <option  value="{{$teacher->id}}">
                                             {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}

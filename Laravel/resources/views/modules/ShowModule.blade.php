@@ -23,7 +23,16 @@
                         @endforeach
                         <h5>Docent(en)</h5>
                         @foreach($module->TeacherModules as $teacher)
-                           <p>{{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}</p>
+                            @if($teacher->pivot->is_coordinator == 0)
+                                <p>{{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}</p>
+                            @endif
+                        @endforeach
+                        <h5>Coordinator</h5>
+                        @foreach($module->TeacherModules as $teacher)
+
+                            @if($teacher->pivot->is_coordinator == 1)
+                                <p>{{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}</p>
+                            @endif
                         @endforeach
                     </div>
                 </div>

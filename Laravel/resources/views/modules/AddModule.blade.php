@@ -75,7 +75,15 @@
                             </select>
 
                             <p>Docent(en)</p>
-                            <select multiple name="teacher_id[]" id="teacher_id" class="form-textbox @error('role') error-border @enderror">
+                            <select multiple name="teacher_id[]" id="teacher_id">
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{$teacher->id}}">
+                                        {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <p>Coordinator</p>
+                            <select  name="coordinator_id" id="coordinator_id" >
                                 @foreach ($teachers as $teacher)
                                     <option value="{{$teacher->id}}">
                                         {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
