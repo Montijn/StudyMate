@@ -11,18 +11,21 @@
                         <form action="{{ route('modules.create') }}">
                             <button class="btn btn-primary">Module aanmaken</button>
                         </form>
+                        <br>
+                        <br>
                         @foreach($modules as $module)
                             <div>
                                 <p>{{$module->moduleName}}</p>
+                                <br>
 
                                 <form action="{{ route('modules.show',$module->id) }}">
                                     <button class="btn btn-primary">Bekijk</button>
                                 </form>
-
+                                <br>
                                 <form action="{{ route('modules.edit',$module->id) }}">
                                     <button class="btn btn-primary">Bewerk</button>
                                 </form>
-
+                                <br>
                                 <form action="{{ route('modules.destroy', $module->id) }}" method="POST">
                                     <div>
                                         @csrf
@@ -31,6 +34,8 @@
                                                 onclick="return confirm('Weet je zeker dat je deze module wilt verwijderen?')">
                                             Verwijder
                                         </button>
+                                        <br>
+                                        <br>
                                     </div>
                                 </form>
                             </div>

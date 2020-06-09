@@ -9,13 +9,13 @@
 
                     <div class="card-body">
 
-                        <p >Naam</p>
-                         <p >{{ $module->moduleName }}</p>
-                        <p >Jaar</p>
-                        <p >{{ $module->year }}</p>
-                        <p >Studiepunten</p>
+                        <h5>Naam</h5>
+                         <p>{{ $module->moduleName }}</p>
+                        <h5>Jaar</h5>
+                        <p>{{ $module->year }}</p>
+                        <h5>Studiepunten</h5>
                         <p>{{ $module->credits }}</p>
-                        <p >Toets</p>
+                        <h5>Toets</h5>
                         @foreach ($exams as $exam)
                             @if($exam->id == $module->exam_id)
                                 <p>{{$exam->id . " " . $exam->name . " " . $exam->deadline}}</p>
