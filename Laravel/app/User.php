@@ -42,4 +42,26 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Module', 'module_users')
             ->withPivot('result', 'file');
     }
+
+    public function Modules()
+    {
+        return $this->belongsToMany('App\Module', 'module_users');
+    }
+
+    public function ModulesResults()
+    {
+        return $this->belongsToMany('App\Module', 'module_users')
+            ->withPivot('result');
+    }
+
+    public function PeriodCredits($year, $period)
+    {
+        $modules = $this->ModulesResults()
+            ->where('year', '=', $year)
+            ->where('period', '=', $period)
+            ->where('result', '>', '5.5');
+
+        $total = $modules->sum('credits');
+        return $total;
+    }
 }

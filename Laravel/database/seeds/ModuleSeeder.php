@@ -20,7 +20,7 @@ class ModuleSeeder extends Seeder
         ]);
 
         Module::create(['moduleName' => 'PHP',
-            'year' => 2019,
+            'year' => 2020,
             'period' => 3,
             'credits' => 3,
             'exam_id' => 2
@@ -41,7 +41,7 @@ class ModuleSeeder extends Seeder
         ]);
 
         Module::create(['moduleName' => 'Programmeren 5',
-            'year' => 2019,
+            'year' => 2020,
             'period' => 1,
             'credits' => 5,
             'exam_id' => 5
