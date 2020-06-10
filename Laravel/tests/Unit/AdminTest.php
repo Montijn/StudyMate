@@ -2,19 +2,16 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class AdminTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
+
+    /** @test */
     public function GuestUnauthorizedTest()
     {
 
-        $response = $this->get("/");
-        $response->assertStatus(200);
+        $response = $this->get('/teacheroverview');
+        $response->assertStatus(500);
     }
 }
