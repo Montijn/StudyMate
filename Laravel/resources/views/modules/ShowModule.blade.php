@@ -28,8 +28,8 @@
                             @endif
                         @endforeach
                         <h5>Coordinator</h5>
-                        @foreach($module->TeacherModules as $teacher)
 
+                        @foreach($module->TeacherModules as $teacher)
                             @if($teacher->pivot->is_coordinator == 1)
                                 <p>{{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}</p>
                             @endif

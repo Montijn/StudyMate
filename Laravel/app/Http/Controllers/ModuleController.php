@@ -90,8 +90,7 @@ class ModuleController extends Controller
         $data['module']=Module::whereId($id)->first();
         $data['exams']=Exam::get();
         $data['teachers']=Teacher::get();
-        $teachers = Teacher::with('TeacherModules')->get();
-        return view('modules/EditModule', ['data'=>$data], ['teachers'=>$teachers]);
+        return view('modules/EditModule', ['data'=>$data]);
     }
 
     /**

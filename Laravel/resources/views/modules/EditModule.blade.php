@@ -83,7 +83,7 @@
 
                             <p>Docent(en)</p>
                             <select multiple name="teacher_id[]" id="teacher_id" >
-                                @foreach ($teachers as $teacher)
+                                @foreach ($data['teachers'] as $teacher)
                                         @if($teacher->TeacherModules()->where('module_id', $data['module']->id)->first()
                                             && $teacher->TeacherModules()->where('module_id', $data['module']->id)->first()->pivot->is_coordinator == 0)
                                             <option selected value="{{$teacher->id}}">
@@ -99,7 +99,7 @@
                             </select>
                             <p>Coordinator</p>
                             <select name="coordinator_id" id="coordinator_id" >
-                                @foreach ($teachers as $teacher)
+                                @foreach ($data['teachers'] as $teacher)
                                     @if($teacher->TeacherModules()->where('module_id', $data['module']->id)->first()
                                         && $teacher->TeacherModules()->where('module_id', $data['module']->id)->first()->pivot->is_coordinator == 1)
                                         <option selected value="{{$teacher->id}}">
