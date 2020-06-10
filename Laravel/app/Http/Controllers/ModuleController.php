@@ -90,7 +90,8 @@ class ModuleController extends Controller
         $data['module']=Module::whereId($id)->first();
         $data['exams']=Exam::get();
         $data['teachers']=Teacher::get();
-        return view('modules/EditModule', ['data'=>$data] );
+        $teachers = Teacher::with('TeacherModules')->get();
+        return view('modules/EditModule', ['data'=>$data], ['teachers'=>$teachers]);
     }
 
     /**
@@ -124,6 +125,7 @@ class ModuleController extends Controller
         foreach($allteachers as $teacher){
             $teacher->TeacherModules()->detach($id);
         }
+
         $teachers = $request->input('teacher_id');
         foreach($teachers as $teacherid){
             $teacher = Teacher::whereId($teacherid)->first();
@@ -145,15 +147,10 @@ class ModuleController extends Controller
      */
     public function destroy($id)
     {
-
-
         $module = Module::whereId($id)->first();
-
         if(count($module->TeacherModules) == 0 && count($module->ModuleUsers) == 0 ){
             $module->delete();
         }
-
-
         return redirect()->action('ModuleController@index');
 
     }

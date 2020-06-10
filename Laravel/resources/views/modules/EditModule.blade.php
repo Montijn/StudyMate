@@ -79,37 +79,38 @@
 
                                 @endforeach
                             </select>
+
+
                             <p>Docent(en)</p>
                             <select multiple name="teacher_id[]" id="teacher_id" >
-                                @foreach ($data['teachers'] as $teacher)
-                                    @foreach($teacher->TeacherModules as $module)
-                                        @if($module->id == $data['module']->id && $module->pivot->is_coordinator == 0)
+                                @foreach ($teachers as $teacher)
+                                        @if($teacher->TeacherModules()->where('module_id', $data['module']->id)->first()
+                                            && $teacher->TeacherModules()->where('module_id', $data['module']->id)->first()->pivot->is_coordinator == 0)
                                             <option selected value="{{$teacher->id}}">
                                                 {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
                                             </option>
-
+                                            @else
+                                            <option  value="{{$teacher->id}}">
+                                            {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
+                                            </option>
                                         @endif
-                                    @endforeach
-                                    <option  value="{{$teacher->id}}">
-                                        {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
-                                    </option>
+
                                 @endforeach
                             </select>
                             <p>Coordinator</p>
                             <select name="coordinator_id" id="coordinator_id" >
-                                @foreach ($data['teachers'] as $teacher)
-                                    @foreach($teacher->TeacherModules as $module)
-                                        @if($module->id == $data['module']->id && $module->pivot->is_coordinator == 1)
-                                            <option selected value="{{$teacher->id}}">
-                                                {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
-                                            </option>
-
-                                        @endif
-
-                                    @endforeach
+                                @foreach ($teachers as $teacher)
+                                    @if($teacher->TeacherModules()->where('module_id', $data['module']->id)->first()
+                                        && $teacher->TeacherModules()->where('module_id', $data['module']->id)->first()->pivot->is_coordinator == 1)
+                                        <option selected value="{{$teacher->id}}">
+                                            {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
+                                        </option>
+                                    @else
                                         <option  value="{{$teacher->id}}">
                                             {{$teacher->firstname . " " . $teacher->infix . " " . $teacher->lastname}}
                                         </option>
+                                    @endif
+
                                 @endforeach
                             </select>
 
