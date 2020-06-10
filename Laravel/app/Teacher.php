@@ -20,8 +20,4 @@ class Teacher extends Model
         return $this->belongsToMany('App\Module', 'module_teachers');
     }
 
-    public function Modules()
-    {
-        return $this->belongsToMany('App\Module', 'module_teachers');
-    }
 }
