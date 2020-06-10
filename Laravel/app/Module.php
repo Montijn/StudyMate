@@ -26,4 +26,15 @@ class Module extends Model
     {
         return $this->hasOne('App\Exam');
     }
+
+    public function Users()
+    {
+        return $this->belongsToMany('App\User', 'module_users');
+    }
+
+    public function Teachers()
+    {
+        return $this->belongsToMany('App\Teacher', 'module_teachers');
+    }
+
 }
