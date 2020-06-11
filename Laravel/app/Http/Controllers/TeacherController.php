@@ -36,7 +36,7 @@ class TeacherController extends Controller
     {
         $request->validate([
             'first_name' => ['required', 'string', 'max:20'],
-            'infix' => ['max:10'],
+            'infix' => [ 'string','max:10'],
             'last_name' => ['required', 'string', 'max:20'],
 
         ]);

@@ -36,6 +36,10 @@
     .title {
         font-size: 84px;
     }
+    .alert{
+        list-style: none;
+        text-align: center;
+    }
 
     .links > a {
         color: #636b6f;
@@ -50,11 +54,26 @@
     .m-b-md {
         margin-bottom: 30px;
     }
+
 </style>
 
 @section('content')
+    @if (Session::has('failed-login'))
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <li>{!! Session::get('failed-login') !!}</li>
+        </div>
+    @endif
+    @if (Session::has('failed-access'))
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <li>{!! Session::get('failed-access') !!}</li>
+        </div>
+    @endif
     <div class="flex-center position-ref full-height">
+
         <div class="content">
+
             <div class="title m-b-md">
                 StudyMate
             </div>

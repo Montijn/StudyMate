@@ -4,15 +4,13 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use Illuminate\Http\Request;
-
-class CheckAdmin
+class CheckStudent
 {
     /**
      * Handle an incoming request.
      *
-     * @param  Request  $request
-     * @param  Closure  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -21,7 +19,8 @@ class CheckAdmin
             return redirect('/')->with('failed-login', 'U heeft geen toegang tot deze pagina, log eerst in');
         }
         $user = Auth::user();
-        if ($user->role == 'Admin') {
+        if ($user->role == 'Student') {
+
             return $next($request);
         }
         return redirect('/')->with('failed-access', 'U heeft geen toegang tot deze pagina');

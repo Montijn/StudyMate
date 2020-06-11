@@ -29,10 +29,10 @@
                             <p >Jaar</p>
                             <input id="year" name="year"
                                    class="form-textbox profile-textbox @error('year') error-border @enderror"
-                                   type="number" min = "2010" max = "2025"   autocomplete="year" autofocus>
+                                   type="number" min = "2019" max = "2021"   autocomplete="year" autofocus>
 
                             @error('year')
-                            <div >
+                            <div>
                                 <p role="alert">
                                     {{ $message }}
                                 </p>
@@ -55,7 +55,7 @@
                             <p>Studiepunten</p>
                             <input id="credits" name="credits"
                                    class="form-textbox profile-textbox @error('credits') error-border @enderror"
-                                   type="number" min = "1" max="4"  autocomplete="credits" autofocus>
+                                   type="number" min = "1" max="5"  autocomplete="credits" autofocus>
 
                             @error('credits')
                             <div class="error-container">
