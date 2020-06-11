@@ -13,7 +13,9 @@ class UserTest extends TestCase
     /** @test */
     public function DatabaseHasUser()
     {
+        // 1. Arrange
         $new_User = factory(\App\User::class)->create();
+        // 2/3. Act/Assert
         $this->assertDatabaseHas('Users', [
             'firstname' => 'Montijn',
         ]);
