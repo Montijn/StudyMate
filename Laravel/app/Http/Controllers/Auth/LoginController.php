@@ -29,7 +29,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->route('dashboard.index');
+        return redirect()->route('home.index');
     }
 
     /**
