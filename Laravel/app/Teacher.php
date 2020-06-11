@@ -13,8 +13,9 @@ class Teacher extends Model
     public function TeacherModules()
     {
         return $this->belongsToMany('App\Module', 'module_teachers')
-            ->withPivot('is_coordinator','module_id', 'teacher_id');
+            ->withPivot('is_coordinator', 'module_id', 'teacher_id');
     }
+
     public function Modules()
     {
         return $this->belongsToMany('App\Module', 'module_teachers');

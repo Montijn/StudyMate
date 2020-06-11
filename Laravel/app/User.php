@@ -60,8 +60,12 @@ class User extends Authenticatable
             ->where('year', '=', $year)
             ->where('period', '=', $period)
             ->where('result', '>', '5.5');
-
         $total = $modules->sum('credits');
         return $total;
+    }
+
+    public function Tags()
+    {
+        return $this->belongsToMany('App\Tag', 'exam_tags');
     }
 }

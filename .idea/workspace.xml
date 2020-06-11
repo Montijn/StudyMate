@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1358bdf5-ef1a-4c31-bdb6-a2cd44005588" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/StudyMate.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Laravel/app/Http/Controllers/DashboardController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Laravel/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Laravel/resources/views/Dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laravel/app/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/Exam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laravel/app/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/Module.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laravel/app/Teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/Teacher.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laravel/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/database/migrations/2020_06_06_161620_create_module_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/database/migrations/2020_06_06_161620_create_module_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/database/seeds/ModuleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/database/seeds/ModuleSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/database/seeds/ModuleUsersSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/database/seeds/ModuleUsersSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laravel/database/migrations/2020_06_06_142156_create_exams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/database/migrations/2020_06_06_142156_create_exams_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laravel/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laravel/database/seeds/ExamSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/database/seeds/ExamSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laravel/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laravel/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +139,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Terre-des-Hommes" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
@@ -164,7 +154,7 @@
       <updated>1591438306544</updated>
       <workItem from="1591438307803" duration="2509000" />
       <workItem from="1591618687992" duration="2888000" />
-      <workItem from="1591623143544" duration="31395000" />
+      <workItem from="1591623143544" duration="58783000" />
     </task>
     <servers />
   </component>
@@ -172,10 +162,15 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1591622156434">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1591876342920">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591622156434" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591867041384" />
+    <state x="2660" y="275" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1591876342920" />
+    <state x="2136" y="40" width="1410" height="712" maximized="true" key="dock-window-1" timestamp="1591876333727">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2136" y="40" width="1410" height="712" maximized="true" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591876333727" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591807357135">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

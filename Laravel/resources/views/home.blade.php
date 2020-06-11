@@ -65,6 +65,7 @@
                     <a href="{{ url('/admin') }}">Admin pagina</a>
                     @else
                         <a href="{{ url('/dashboard') }}">Dashboard</a>
+                        <a href="{{url('/deadlines')}}">Deadlines</a>
                 @endif
 
                 @endauth

@@ -27,3 +27,4 @@ Route::resource('teachers', 'TeacherController')->middleware('CheckAdmin');
 Route::resource('modules', 'ModuleController')->middleware('CheckAdmin');
 
 Route::resource('dashboard', 'DashboardController');
+Route::resource('deadlines', 'DeadlineController');

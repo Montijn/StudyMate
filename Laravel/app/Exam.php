@@ -12,6 +12,12 @@ class Exam extends Model
 
     public function Module()
     {
-        return $this->belongsTo('App\Module');
+        return $this->belongsTo('App\Module', 'exam_id');
+    }
+
+    public function Tags()
+    {
+        return $this->belongsToMany('App\Tag', 'exam_tags')
+            ->withPivot('user_id');
     }
 }

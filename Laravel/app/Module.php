@@ -24,7 +24,7 @@ class Module extends Model
 
     public function Exam()
     {
-        return $this->hasOne('App\Exam');
+        return $this->belongsTo('App\Exam', 'exam_id');
     }
 
     public function Users()
@@ -37,4 +37,8 @@ class Module extends Model
         return $this->belongsToMany('App\Teacher', 'module_teachers');
     }
 
+    public function Coordinator()
+    {
+        return $this->Teachers()->wherePivot('is_coordinator', '=', '1')->take(1);
+    }
 }

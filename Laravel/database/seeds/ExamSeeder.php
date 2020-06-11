@@ -27,13 +27,13 @@ class ExamSeeder extends Seeder
         Exam::create([
             'name' => 'Remindo toets',
             'deadline' => '2020-06-09 13:10:00',
-            'examType' => 'prelim'
+            'examType' => 'tentamen'
         ]);
 
         Exam::create([
             'name' => 'Remindo toets',
             'deadline' => '2020-01-15 08:30:00',
-            'examType' => 'prelim'
+            'examType' => 'tentamen'
         ]);
 
         Exam::create([
