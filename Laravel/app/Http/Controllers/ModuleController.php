@@ -105,10 +105,10 @@ class ModuleController extends Controller
         $module = Module::where('id', $id)->first();
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
-            'year' => ['required'],
-            'period' => ['required'],
-            'credits' => ['required'],
-            'exam_id' =>['required']
+            'year' => ['required', 'digits:4','integer', 'min:2019','max:2021'],
+            'period' => ['required','digits:1','integer', 'min:1','max:4'],
+            'credits' => ['required','digits:1','integer', 'min:1','max:5'],
+            'exam_id' =>['required','integer']
         ]);
 
         $module
@@ -147,10 +147,13 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         $module = Module::whereId($id)->first();
-        if(count($module->TeacherModules) == 0 && count($module->ModuleUsers) == 0 ){
+        if(count($module->ModuleUsers) == 0 ){
+            foreach($module->TeacherModules as $teacher){
+                $teacher->TeacherModules()->detach($id);
+            }
             $module->delete();
         }
-        return redirect()->action('ModuleController@index');
+        return redirect()->action('ModuleController@index')->with('failed-delete', 'U kunt deze module niet verwijderen, omdat een Student dit vak volgt');;
 
     }
 }
