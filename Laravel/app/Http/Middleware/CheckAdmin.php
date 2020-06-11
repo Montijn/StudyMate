@@ -18,12 +18,12 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
         if(!Auth::check()){
-            return redirect('/');
+            return redirect('/')->with('failed-login', 'U heeft geen toegang tot deze pagina, log eerst in');
         }
         $user = Auth::user();
         if ($user->role == 'Admin') {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/')->with('failed-access', 'U heeft geen toegang tot deze pagina');
     }
 }
