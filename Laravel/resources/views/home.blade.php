@@ -59,12 +59,14 @@
 
 @section('content')
     @if (Session::has('failed-login'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <li>{!! Session::get('failed-login') !!}</li>
         </div>
     @endif
     @if (Session::has('failed-access'))
-        <div class="alert alert-danger ">
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <li>{!! Session::get('failed-access') !!}</li>
         </div>
     @endif

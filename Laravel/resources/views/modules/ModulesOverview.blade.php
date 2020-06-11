@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Session::has('failed-delete'))
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p>{!! Session::get('failed-delete') !!}</p>
+        </div>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

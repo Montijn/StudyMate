@@ -153,7 +153,10 @@ class ModuleController extends Controller
             }
             $module->delete();
         }
-        return redirect()->action('ModuleController@index')->with('failed-delete', 'U kunt deze module niet verwijderen, omdat een Student dit vak volgt');;
+        else{
+            return redirect()->action('ModuleController@index')->with('failed-delete', 'U kunt deze module niet verwijderen, omdat een student dit vak volgt');;
+        }
+        return redirect()->action('ModuleController@index');
 
     }
 }

@@ -28,11 +28,11 @@
 
                             <p >Jaar</p>
                             <input id="year" name="year"
-                                   class="form-textbox profile-textbox @error('jaar') error-border @enderror"
+                                   class="form-textbox profile-textbox @error('year') error-border @enderror"
                                    type="number" min = "2019" max = "2021"   autocomplete="year" autofocus>
 
-                            @error('jaar')
-                            <div >
+                            @error('year')
+                            <div>
                                 <p role="alert">
                                     {{ $message }}
                                 </p>
