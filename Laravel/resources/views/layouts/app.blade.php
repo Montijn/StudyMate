@@ -52,6 +52,8 @@
                         @else
                             @if(Auth::User()->role == "Admin")
                                 <a class="nav-link" href="{{ url('/admin') }}">Admin pagina</a>
+                                <a class="nav-link" href="{{ url('/modules') }}">Modules</a>
+                                <a class="nav-link" href="{{ url('/teachers') }}">Docenten</a>
                             @else
                                 <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a>
                             @endif
