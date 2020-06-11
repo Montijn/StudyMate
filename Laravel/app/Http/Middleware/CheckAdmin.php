@@ -24,6 +24,9 @@ class CheckAdmin
         if ($user->role == 'Admin') {
             return $next($request);
         }
-        return redirect('/')->with('failed-access', 'U heeft geen toegang tot deze pagina');
+        else{
+            return redirect('/')->with('failed-access', 'U heeft geen toegang tot deze pagina');
+        }
+
     }
 }

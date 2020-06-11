@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'AdminController@index')->name('admin')->middleware('CheckAdmin');
+Route::get('/admin', 'AdminController@index')->middleware('CheckAdmin');
 Route::resource('teachers', 'TeacherController')->middleware('CheckAdmin');
 Route::resource('modules', 'ModuleController')->middleware('CheckAdmin');
 
-Route::resource('dashboard', 'DashboardController');
-Route::resource('deadlines', 'DeadlineController');
+Route::resource('dashboard', 'DashboardController')->middleware('CheckStudent');
+Route::resource('deadlines', 'DeadlineController')->middleware('CheckStudent');
