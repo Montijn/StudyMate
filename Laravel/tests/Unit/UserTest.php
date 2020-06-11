@@ -4,11 +4,11 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-class AdminTest extends TestCase
+class UserTest extends TestCase
 {
     use RefreshDatabase;
     /** @test */
-    public function GuestUnauthorizedTest()
+    public function DatabaseHasUser()
     {
         $new_User = factory(\App\User::class)->create();
         $this->assertDatabaseHas('Users', [
