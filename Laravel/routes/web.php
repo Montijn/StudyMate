@@ -25,3 +25,4 @@ Route::resource('modules', 'ModuleController')->middleware('CheckAdmin');
 
 Route::resource('dashboard', 'DashboardController');
 Route::resource('deadlines', 'DeadlineController');
+Route::post('/sort', 'DeadlineController@sortRequest');

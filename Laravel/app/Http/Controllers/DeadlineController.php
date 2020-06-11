@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exam;
 use App\Module;
 use App\Tag;
+use http\Client\Curl\User;
 use Illuminate\Cache\TagSet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -104,5 +105,31 @@ class DeadlineController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sortRequest(Request $request)
+    {
+        $user = Auth::user();
+        if($request->ajax()) {
+            if(!empty($request->get('sort'))) {
+                $sort = $request->get('sort');
+                dd($sort);
+                if($sort = 'Docent') {
+                    $modules = $user->Modules()->with('exam')->orderBy('module_teachers.teacher_id', 'asc')->get();
+                }
+                else if($sort = 'Module') {
+                    $modules = $user->Modules()->orderBy('moduleName', 'asc');
+                }
+                else if($sort = 'Tijd') {
+                    $modules = $user->Modules()->with('Exam')->orderBy('exam.deadline', 'asc');
+                }
+                else if($sort = 'Categorie') {
+                    $modules = $user->Modules()->with('Exam')->orderBy('exam.examType', 'asc');
+                }
+
+                $returnview = view('deadlines.partial-deadlines')->with('modules', $modules)->render();
+                return response()->json(array('success' => true, 'html' => $returnview));
+            }
+        }
     }
 }

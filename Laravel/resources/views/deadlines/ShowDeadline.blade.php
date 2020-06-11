@@ -19,7 +19,6 @@
                 </option>
                 @endforeach
         </select>
-
         @method('PUT')
         <button type="submit" class="btn btn-success">Voeg tag toe</button>
         @csrf

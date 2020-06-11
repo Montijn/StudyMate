@@ -1,16 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    @foreach($modules as $module)
-        <p>{{$module->moduleName}}</p>
-    <label>{{$module->exam->name}}</label>
-        <label>{{$module->exam->examType}}</label>
-        <p>{{$module->exam->deadline}}</p>
-        @foreach($module->Coordinator as $coordinator)
-            <p>{{$coordinator->firstname}} {{$coordinator->infix}} {{$coordinator->lastname}}</p>
-            @endforeach
-        <form action="{{route('deadlines.edit', $module->exam_id)}}">
-            <button class="btn btn-primary">Bekijk deadline</button>
-        </form>
-    @endforeach
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div id="deadlines" class="card-header">Deadline overzicht
+                        <select class="form-textbox" name="sort" id="sortdropdown">
+                            <option selected>Docent</option>
+                            <option>Module</option>
+                            <option>Tijd</option>
+                            <option>Categorie</option>
+                        </select>
+                    </div>
+
+                    <div class="card-body">
+                    @include('deadlines.partial-deadlines')
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
+@section('js')
+    <script src="{{ URL::to('js/sorting.js')}}"></script>
+    @endsection
+
+
+
