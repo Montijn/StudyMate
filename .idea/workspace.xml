@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1358bdf5-ef1a-4c31-bdb6-a2cd44005588" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/app/Http/Controllers/DeadlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/app/Http/Controllers/DeadlineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/resources/views/deadlines/Deadlines.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/resources/views/deadlines/Deadlines.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/resources/views/deadlines/ShowDeadline.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/resources/views/deadlines/ShowDeadline.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laravel/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Laravel/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="1358bdf5-ef1a-4c31-bdb6-a2cd44005588" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,7 +151,7 @@
       <workItem from="1591438307803" duration="2509000" />
       <workItem from="1591618687992" duration="2888000" />
       <workItem from="1591623143544" duration="59383000" />
-      <workItem from="1591881761656" duration="4100000" />
+      <workItem from="1591881761656" duration="4546000" />
     </task>
     <servers />
   </component>
